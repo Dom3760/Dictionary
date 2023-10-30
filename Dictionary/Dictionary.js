@@ -1,21 +1,74 @@
 //making variables for all of the input and section
-const button = document.getElementById("submit")
-const input = document.getElementById("input")
-const container = document.getElementById("main-section")
+const button = document.getElementById("submit");
+const input = document.getElementById("input");
+const container = document.getElementById("main-section");
+const divContainer = document.getElementById ("div");
+var input2 = input.value;
 
+var defTitle = document.createElement ("h2");
+var defPOS = document.createElement ("p");
+var def = document.createElement ("p");
 //loop to check if the input matches any of the definitions
 function displayWord()
 {
-    for(i = 0; i < define.length; )
+    if(input2 === "")
     {
-        
+        divContainer.innerText = "Please enter a word."
+        return;
     }
-}
+    var isPresent = false;
+    for(i = 0; i < define.length; i++)
+    {
+        if (input2 === define[i].word)
+        {
+            isPresent = true;
+            container.appendChild(divContainer);
+            divContainer.appendChild (defTitle);
+            defTitle.textContent = define[i];
+            divContainer.appendChild (defPOS);
+            defPOS.textContent  = define[i].partOfSpeech;
+            divContainer.appendChild = def;
+            def.textContent = define[i].definitions;
+            break;
+        }
+
+    //     if (input2 === define[i])
+    //     {
+            // container.appendChild(divContainer);
+            // divContainer.appendChild (defTitle);
+            // defTitle.textContent = define[i];
+            // divContainer.appendChild (defPOS);
+            // defPOS.textContent  = define[i].partOfSpeech;
+            // divContainer.appendChild = def;
+            // def.textContent = define[i].definitions;
+    //     }
+    //     else if (input2 != define[i])
+    //     {   
+    //         container.appendChild(divContainer);
+    //         divContainer.appendChild(def);
+    //         def.textContent = ("That word is not in the dictionary or does not exist.");
+    //     }
+    //     else
+    //     {
+            // container.appendChild(divContainer);
+            // divContainer.appendChild(def);
+            // def.textContent = ("Please enter Somthing to put search.");
+    //     }
+    }
+    if(isPresent)
+    {
+
+    }
+    else
+    {
+
+    }
+};
 
 //define all of the objects and array's.
-const define = ["yes","panacea","concatenation","saw","found","crane","minute","grotesque","label","debacle"]
 
 const yes = {
+    word: "yes",
     partOfSpeech: "noun" ,
     
     definitions:[
@@ -25,18 +78,21 @@ const yes = {
 };
 
 const panacea = {
+    word: "panacea",
     partOfSpeech: "noun" ,
     
     definitions: "An answer or solution for all problems or difficulties."
 };
 
 const concatenation = {
+    word: "concatenation",
     partOfSpeech: "noun" ,
     
     definitions: "A series of interconnected or interdependent things or events."
 };
 
 const saw = {
+    word: "saw",
     partOfSpeech: "verb" ,
     
     definitions: [
@@ -46,6 +102,7 @@ const saw = {
 };
 
 const found = {
+    word: "found",
     partOfSpeech: "adjective" ,
     
     definitions: 
@@ -56,6 +113,7 @@ const found = {
 };
 
 const crane = {
+    word: "crane",
     partOfSpeech: "verb" ,
     
     definitions:[
@@ -65,6 +123,7 @@ const crane = {
 };
 
 const minute = {
+    word: "minute",
     partOfSpeech: "noun" ,
     
     definitions:[
@@ -74,23 +133,27 @@ const minute = {
 };
 
 const grotesque = {
+    word: "grotesque",
     partOfSpeech: "adjective" ,
     
     definitions:  "Comically or repulsively ugly or distorted."
 };
 
 const label = {
+    word: "label",
     partOfSpeech: "noun" ,
     
     definitions:"A small piece of paper, fabric, plastic, or similar material attached to an object and giving information about it."
 };
 
 const debacle = {
+    word: "debacle",
     partOfSpeech: "noun" ,
     
     definitions:"A sudden and ignominious failure; a fiasco."
 };
 
+const define = [yes,panacea,concatenation,saw,found,crane,minute,grotesque,label,debacle]; 
 //add an event listener to launch the function when button is clicked
 
-button.addEventListener("click", displayWord)
+button.addEventListener("click", displayWord);
