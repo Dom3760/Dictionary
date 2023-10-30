@@ -22,25 +22,18 @@ function displayWord()
         if (input2 === define[i].word)
         {
             isPresent = true;
-            container.appendChild(divContainer);
-            divContainer.appendChild (defTitle);
-            defTitle.textContent = define[i];
-            divContainer.appendChild (defPOS);
-            defPOS.textContent  = define[i].partOfSpeech;
-            divContainer.appendChild = def;
-            def.textContent = define[i].definitions;
             break;
         }
 
     //     if (input2 === define[i])
     //     {
-            // container.appendChild(divContainer);
-            // divContainer.appendChild (defTitle);
-            // defTitle.textContent = define[i];
-            // divContainer.appendChild (defPOS);
-            // defPOS.textContent  = define[i].partOfSpeech;
-            // divContainer.appendChild = def;
-            // def.textContent = define[i].definitions;
+    //         container.appendChild(divContainer);
+    //         divContainer.appendChild (defTitle);
+    //         defTitle.textContent = define[i];
+    //         divContainer.appendChild (defPOS);
+    //         defPOS.textContent  = define[i].partOfSpeech;
+    //         divContainer.appendChild = def;
+    //         def.textContent = define[i].definitions;
     //     }
     //     else if (input2 != define[i])
     //     {   
@@ -50,9 +43,9 @@ function displayWord()
     //     }
     //     else
     //     {
-            // container.appendChild(divContainer);
-            // divContainer.appendChild(def);
-            // def.textContent = ("Please enter Somthing to put search.");
+    //         container.appendChild(divContainer);
+    //         divContainer.appendChild(def);
+    //         def.textContent = ("Please enter Somthing to put search.");
     //     }
     }
     if(isPresent)
