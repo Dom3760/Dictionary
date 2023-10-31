@@ -2,59 +2,84 @@
 const button = document.getElementById("submit");
 const input = document.getElementById("input");
 const container = document.getElementById("main-section");
-const divContainer = document.getElementById ("div");
-var input2 = input.value;
+
+const divContainer = document.createElement ("div");
+divContainer.classList.add("divContainer");
+
+const list = document.createElement("ol")
+
 
 var defTitle = document.createElement ("h2");
+defTitle.classList.add("emptyInput");
+
 var defPOS = document.createElement ("p");
+defPOS.classList.add("partOfSpeach")
+
 var def = document.createElement ("p");
+
 //loop to check if the input matches any of the definitions
 function displayWord()
 {
+    const input2 = input.value.toLowerCase();
+
     if(input2 === "")
-    {
-        divContainer.innerText = "Please enter a word."
+    {   
+        container.appendChild(divContainer);
+        divContainer.appendChild(defTitle);
+        defTitle.innerText = "Please enter a word.";
+        defPOS.textContent = ("");
+        def.textContent = ("");
         return;
     }
+    
     var isPresent = false;
-    for(i = 0; i < define.length; i++)
+    
+    for(var i = 0; i < define.length; i++)
     {
         if (input2 === define[i].word)
         {
             isPresent = true;
+            var i = [i]
             break;
         }
-
-    //     if (input2 === define[i])
-    //     {
-    //         container.appendChild(divContainer);
-    //         divContainer.appendChild (defTitle);
-    //         defTitle.textContent = define[i];
-    //         divContainer.appendChild (defPOS);
-    //         defPOS.textContent  = define[i].partOfSpeech;
-    //         divContainer.appendChild = def;
-    //         def.textContent = define[i].definitions;
-    //     }
-    //     else if (input2 != define[i])
-    //     {   
-    //         container.appendChild(divContainer);
-    //         divContainer.appendChild(def);
-    //         def.textContent = ("That word is not in the dictionary or does not exist.");
-    //     }
-    //     else
-    //     {
-    //         container.appendChild(divContainer);
-    //         divContainer.appendChild(def);
-    //         def.textContent = ("Please enter Somthing to put search.");
-    //     }
     }
+
     if(isPresent)
     {
+        container.appendChild(divContainer)
+        
+        divContainer.appendChild(defTitle)
+        defTitle.textContent = input2
+        
+        divContainer.appendChild(defPOS)
+        defPOS.textContent = "Part Of Speech: "+define[i].partOfSpeech
+        
+        
+        divContainer.appendChild(list)
 
+        for (x=0 ; x<define[i].definitions.length; x++)
+        {  
+            const listItem = document.createElement ("li")
+            listItem.classList.add("defText")
+            list.appendChild (listItem)
+            listItem.textContent += define[i].definitions[x]
+        }
+        
+        button.addEventListener("click", del)
+        function del ()
+        {
+            listItem.textContent("")   
+        }
     }
+
     else
     {
+        container.appendChild(divContainer)
 
+        divContainer.appendChild(defTitle)
+        defTitle.textContent = "That word does not exist or is not on our dictioary sorry."
+        defPOS.textContent = ("");
+        def.textContent = (""); 
     }
 };
 
