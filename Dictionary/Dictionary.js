@@ -6,22 +6,24 @@ const container = document.getElementById("main-section");
 const divContainer = document.createElement ("div");
 divContainer.classList.add("divContainer");
 
-const list = document.createElement("ol")
+const list = document.createElement("ol");
 
 
 var defTitle = document.createElement ("h2");
 defTitle.classList.add("emptyInput");
 
 var defPOS = document.createElement ("p");
-defPOS.classList.add("partOfSpeach")
+defPOS.classList.add("partOfSpeach");
 
 var def = document.createElement ("p");
 
-//loop to check if the input matches any of the definitions
+//function to check if word is in dictionary.
 function displayWord()
-{
+{   
+    //makes all input lowercase no matter what.
     const input2 = input.value.toLowerCase();
 
+    //if the input feild is empty then it will say "Please enter a word."
     if(input2 === "")
     {   
         container.appendChild(divContainer);
@@ -29,9 +31,11 @@ function displayWord()
         defTitle.innerText = "Please enter a word.";
         defPOS.textContent = ("");
         def.textContent = ("");
+        list.remove()
         return;
     }
     
+    //declaring that is present is false so if condition is met it will be set to true.
     var isPresent = false;
     
     for(var i = 0; i < define.length; i++)
@@ -39,47 +43,49 @@ function displayWord()
         if (input2 === define[i].word)
         {
             isPresent = true;
-            var i = [i]
+            var i = [i];
             break;
         }
     }
 
+    //if is present is true then it will add the word below the other content.
     if(isPresent)
     {
-        container.appendChild(divContainer)
+        container.appendChild(divContainer);
         
-        divContainer.appendChild(defTitle)
-        defTitle.textContent = input2
+        divContainer.appendChild(defTitle);
+        defTitle.textContent = input2;
         
-        divContainer.appendChild(defPOS)
-        defPOS.textContent = "Part Of Speech: "+define[i].partOfSpeech
+        divContainer.appendChild(defPOS);
+        defPOS.textContent = "Part Of Speech: "+define[i].partOfSpeech;
         
         
-        divContainer.appendChild(list)
+        divContainer.appendChild(list);
 
-        for (x=0 ; x<define[i].definitions.length; x++)
-        {  
-            const listItem = document.createElement ("li")
-            listItem.classList.add("defText")
-            list.appendChild (listItem)
-            listItem.textContent += define[i].definitions[x]
+        while (list.firstChild) {
+            list.removeChild(list.firstChild);
         }
-        
-        button.addEventListener("click", del)
-        function del ()
-        {
-            listItem.textContent("")   
+        //list that creates a list for the definitions and adds the list definitions.
+        for (let x=0 ; x<define[i].definitions.length; x++)
+        {  
+            const listItem = document.createElement ("li");
+            listItem.classList.add("defText");
+            listItem.textContent += define[i].definitions[x];
+            list.appendChild (listItem);
+            // listItem.innerText = (x + 1) + ". " + define[i].definitions[x];
         }
     }
 
+    //if no other conditions are met then it will presume that the word does not exist or is not on the dictionary
     else
     {
-        container.appendChild(divContainer)
+        container.appendChild(divContainer);
 
-        divContainer.appendChild(defTitle)
-        defTitle.textContent = "That word does not exist or is not on our dictioary sorry."
+        divContainer.appendChild(defTitle);
+        defTitle.textContent = "That word does not exist or is not on our dictioary sorry.";
         defPOS.textContent = ("");
-        def.textContent = (""); 
+        def.textContent = ("");
+        list.remove() 
     }
 };
 
@@ -99,14 +105,14 @@ const panacea = {
     word: "panacea",
     partOfSpeech: "noun" ,
     
-    definitions: "An answer or solution for all problems or difficulties."
+    definitions: ["An answer or solution for all problems or difficulties."]
 };
 
 const concatenation = {
     word: "concatenation",
     partOfSpeech: "noun" ,
     
-    definitions: "A series of interconnected or interdependent things or events."
+    definitions: ["A series of interconnected or interdependent things or events."]
 };
 
 const saw = {
@@ -154,21 +160,21 @@ const grotesque = {
     word: "grotesque",
     partOfSpeech: "adjective" ,
     
-    definitions:  "Comically or repulsively ugly or distorted."
+    definitions:  ["Comically or repulsively ugly or distorted."]
 };
 
 const label = {
     word: "label",
     partOfSpeech: "noun" ,
     
-    definitions:"A small piece of paper, fabric, plastic, or similar material attached to an object and giving information about it."
+    definitions:["A small piece of paper, fabric, plastic, or similar material attached to an object and giving information about it."]
 };
 
 const debacle = {
     word: "debacle",
     partOfSpeech: "noun" ,
     
-    definitions:"A sudden and ignominious failure; a fiasco."
+    definitions:["A sudden and ignominious failure; a fiasco."]
 };
 
 const define = [yes,panacea,concatenation,saw,found,crane,minute,grotesque,label,debacle]; 
